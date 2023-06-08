@@ -3,13 +3,23 @@ from playwright.sync_api import sync_playwright
 from playwright.sync_api._generated import Page
 import json
 import time
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+TW_EMAIL = os.getenv("TW_EMAIL")
+TW_USERNAME = os.getenv("TW_USERNAME")
+TW_PASSWORD = os.getenv("TW_PASSWORD")
 
 def parse_tweets(selector: Selector):
+
     results = []
 
     tweets = selector.xpath("//article[@data-testid='tweet']")
 
     for i, tweet in enumerate(tweets):
+
         found = {
             "text": "".join(tweet.xpath(".//*[@data-testid='tweetText']//text()").getall()),
             #"username": tweet.xpath(".//*[@data-testid='User-Names']/div[1]//text()").get(),
@@ -26,12 +36,6 @@ def parse_tweets(selector: Selector):
             "views": (tweet.xpath(".//*[contains(@aria-label,'Views')]").re("(\d+) Views") or [None])[0],
         }
 
-        # if i == 0:
-        #     found["views"] = tweet.xpath('.//span[contains(text(),"Views")]/../preceding-sibling::div//text()').get()
-        #     found["retweets"] = tweet.xpath('.//a[contains(@href,"retweets")]//text()').get()
-        #     found["quote_tweets"] = tweet.xpath('.//a[contains(@href,"retweets/with_comments")]//text()').get()
-        #     found["likes"] = tweet.xpath('.//a[contains(@href,"likes")]//text()').get()
-
         results.append({k: v for k, v in found.items() if v is not None})
 
     return results
@@ -41,8 +45,6 @@ def scrape_tweet(search: str, page: Page):
 
     page.fill('input[type="text"]', search)
     page.keyboard.press('Enter')
-
-    # page.locator("//span[text()='Latest']").click()
 
     tweets = list()
     for i in range(10):
@@ -56,15 +58,21 @@ def scrape_tweet(search: str, page: Page):
     return tweets
 
 def authentication(page: Page):
+
     page.goto("https://twitter.com/login")
-    page.fill('input[type="text"]', '[REDACTED]')
+    page.fill('input[type="text"]', TW_EMAIL)
     page.keyboard.press('Enter')
 
-    if page.locator("//span[text()='Phone']"):
-        page.fill('input[type="text"]', '[REDACTED]')
+    if not page.get_by_label("Text"):
+        print("tets1")
+        page.fill('input[type="password"]', TW_PASSWORD)
         page.keyboard.press('Enter')
-
-    page.fill('input[type="password"]', '[REDACTED]')
+    else:
+        print("tets2")
+        page.fill('input[type="text"]', TW_USERNAME)
+        page.keyboard.press('Enter')
+        page.fill('input[type="password"]', TW_PASSWORD)
+    
     page.keyboard.press('Enter')
 
 
@@ -74,7 +82,7 @@ with sync_playwright() as pw:
     page = browser.new_page(viewport={"width": 1080, "height": 720})
 
     authentication(page)
-    tweet_and_replies = scrape_tweet("#apple", page)
+    tweet_and_replies = scrape_tweet("#applestock", page)
 
     print("tweets grabbed: "+str(len(tweet_and_replies)))
 
