@@ -64,11 +64,9 @@ def authentication(page: Page):
     page.keyboard.press('Enter')
 
     if not page.get_by_label("Text"):
-        print("tets1")
         page.fill('input[type="password"]', TW_PASSWORD)
         page.keyboard.press('Enter')
     else:
-        print("tets2")
         page.fill('input[type="text"]', TW_USERNAME)
         page.keyboard.press('Enter')
         page.fill('input[type="password"]', TW_PASSWORD)
@@ -84,7 +82,7 @@ with sync_playwright() as pw:
     authentication(page)
     tweet_and_replies = scrape_tweet("#applestock", page)
 
-    print("tweets grabbed: "+str(len(tweet_and_replies)))
+    print("Tweets Grabbed: " + str(len(tweet_and_replies)))
 
-    with open(time.strftime("%Y-%m-%d")+'.json', 'w', encoding='utf-8') as f:
+    with open('scraped/'+time.strftime("%Y-%m-%d")+'.json', 'w', encoding='utf-8') as f:
         json.dump(tweet_and_replies, f, ensure_ascii=False, indent=4)
