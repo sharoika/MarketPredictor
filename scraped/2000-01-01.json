@@ -1,0 +1,12 @@
+// this is a template JSON for format of the output
+
+[
+    {
+        "text": "This a test weet, for formatting.",
+        "datetime": "2001-01-01T01:01:01.000Z",
+        "likes": "123",
+        "retweets": "123",
+        "replies": "123",
+        "views": "123456"
+    }
+]
