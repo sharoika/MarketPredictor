@@ -4,13 +4,6 @@ from playwright.sync_api import sync_playwright
 from playwright.sync_api._generated import Page
 import json, time, os
 
-# .env file contents: 
-#
-# TW_EMAIL = ""
-# TW_USERNAME = ""
-# TW_PASSWORD = ""
-#
-
 load_dotenv()
 TW_EMAIL = os.getenv("TW_EMAIL")
 TW_USERNAME = os.getenv("TW_USERNAME")
@@ -75,14 +68,14 @@ def authentication(page: Page):
     
     page.keyboard.press('Enter')
 
-def scrapeTweets():
+def scrapeTweets(ticker):
     with sync_playwright() as pw:
 
         browser = pw.chromium.launch(headless=False, channel="chrome")
         page = browser.new_page(viewport={"width": 1080, "height": 720})
 
         authentication(page)
-        tweet_and_replies = scrape_tweet("#applestock", page)
+        tweet_and_replies = scrape_tweet("#"+ticker, page)
 
         with open('scraped/'+time.strftime("%Y-%m-%d")+'.json', 'w', encoding='utf-8') as f:
             json.dump(tweet_and_replies, f, ensure_ascii=False, indent=4)
