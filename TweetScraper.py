@@ -58,7 +58,7 @@ def authentication(page: Page):
     page.fill('input[type="text"]', TW_EMAIL)
     page.keyboard.press('Enter')
 
-    if not page.get_by_label("Text"):
+    if not page.get_by_label("css-1dbjc4n r-1ets6dv r-z2wwpe r-rs99b7 r-18u37iz"):
         page.fill('input[type="password"]', TW_PASSWORD)
         page.keyboard.press('Enter')
     else:
