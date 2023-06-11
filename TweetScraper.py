@@ -8,7 +8,7 @@ import json, time, os
 #
 # TW_EMAIL = ""
 # TW_USERNAME = ""
-# TW_PASSWORD = "ense489project"
+# TW_PASSWORD = ""
 #
 
 load_dotenv()
