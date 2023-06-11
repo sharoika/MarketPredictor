@@ -75,16 +75,16 @@ def authentication(page: Page):
     
     page.keyboard.press('Enter')
 
+def scrapeTweets():
+    with sync_playwright() as pw:
 
-with sync_playwright() as pw:
+        browser = pw.chromium.launch(headless=False, channel="chrome")
+        page = browser.new_page(viewport={"width": 1080, "height": 720})
 
-    browser = pw.chromium.launch(headless=False, channel="chrome")
-    page = browser.new_page(viewport={"width": 1080, "height": 720})
+        authentication(page)
+        tweet_and_replies = scrape_tweet("#applestock", page)
 
-    authentication(page)
-    tweet_and_replies = scrape_tweet("#applestock", page)
+        with open('scraped/'+time.strftime("%Y-%m-%d")+'.json', 'w', encoding='utf-8') as f:
+            json.dump(tweet_and_replies, f, ensure_ascii=False, indent=4)
 
-    with open('scraped/'+time.strftime("%Y-%m-%d")+'.json', 'w', encoding='utf-8') as f:
-        json.dump(tweet_and_replies, f, ensure_ascii=False, indent=4)
-
-    print("Tweets Grabbed: " + str(len(tweet_and_replies)))
+        print("Tweets Grabbed: " + str(len(tweet_and_replies)))
