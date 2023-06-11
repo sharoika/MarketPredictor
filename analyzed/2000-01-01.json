@@ -1,0 +1,12 @@
+[
+    {
+        "text": "This a test tweet, for formatting.",
+        "datetime": "2001-01-01T01:01:01.000Z",
+        "likes": "123",
+        "retweets": "123",
+        "replies": "123",
+        "views": "123456",
+        "subjectivity": 1.0,
+        "polarity": 1.0
+    }
+]
