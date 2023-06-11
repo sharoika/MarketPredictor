@@ -4,6 +4,13 @@ from playwright.sync_api import sync_playwright
 from playwright.sync_api._generated import Page
 import json, time, os
 
+# .env file contents: 
+#
+# TW_EMAIL = ""
+# TW_USERNAME = ""
+# TW_PASSWORD = "ense489project"
+#
+
 load_dotenv()
 TW_EMAIL = os.getenv("TW_EMAIL")
 TW_USERNAME = os.getenv("TW_USERNAME")
