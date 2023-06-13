@@ -28,6 +28,7 @@ def analyzeTweets(jsonFilePath, jsonFilePathAnalyzed):
         (polarity, subjectivity) = (TextBlob(tweet['Tweet']).sentiment)
         tweet['subjectivity'] = subjectivity
         tweet['polarity'] = polarity
+        tweet['date'] = tweet['Date'][0:10]
 
     with open(jsonFilePathAnalyzed, 'w', encoding='utf-8') as f:
         json.dump(tweets, f, ensure_ascii=False, indent=4)
