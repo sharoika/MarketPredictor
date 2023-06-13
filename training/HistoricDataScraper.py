@@ -1,4 +1,5 @@
 # 30-09-2021 to 30-09-2022
+# https://www.kaggle.com/datasets/equinxx/stock-tweets-for-sentiment-analysis-and-prediction
 
 import yfinance as yf
 import json
