@@ -14,11 +14,11 @@ def FinanceScraper(ticker):
 
     records = info.to_dict("records")
 
-    with open(ticker + '.json', 'w', encoding='utf-8') as f:
+    with open('data/' + ticker + '.json', 'w', encoding='utf-8') as f:
         json.dump(records, f, ensure_ascii=False, indent=4)
 
 FinanceScraper("AAPL")
-FinanceScraper("AAPL")
-FinanceScraper("AAPL")
-FinanceScraper("AAPL")
-FinanceScraper("AAPL")
+FinanceScraper("MSFT")
+FinanceScraper("TSLA")
+FinanceScraper("NVDA")
+FinanceScraper("AMZN")
