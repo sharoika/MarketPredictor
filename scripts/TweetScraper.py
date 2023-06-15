@@ -58,20 +58,22 @@ def authentication(page: Page):
     page.fill('input[type="text"]', TW_EMAIL)
     page.keyboard.press('Enter')
 
-    if not page.get_by_label("css-1dbjc4n r-1ets6dv r-z2wwpe r-rs99b7 r-18u37iz"):
-        page.fill('input[type="password"]', TW_PASSWORD)
-        page.keyboard.press('Enter')
-    else:
-        page.fill('input[type="text"]', TW_USERNAME)
-        page.keyboard.press('Enter')
-        page.fill('input[type="password"]', TW_PASSWORD)
+    time.sleep(2)
+
+    # try:
+    #     page.fill('input[type="password"]', TW_PASSWORD)
+    #     page.keyboard.press('Enter')
+    # except:
+    page.fill('input[type="text"]', TW_USERNAME)
+    page.keyboard.press('Enter')
+    page.fill('input[type="password"]', TW_PASSWORD)
     
     page.keyboard.press('Enter')
 
 def scrapeTweets(ticker):
     with sync_playwright() as pw:
 
-        browser = pw.chromium.launch(headless=False, channel="chrome")
+        browser = pw.chromium.launch(headless=False, channel="chrome", timeout=5000)
         page = browser.new_page(viewport={"width": 1080, "height": 720})
 
         authentication(page)
