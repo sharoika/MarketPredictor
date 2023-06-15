@@ -58,6 +58,6 @@ model = tf.keras.models.load_model("MarketPredictionModel")
 prediction = model.predict(features)
 
 print(time.strftime("%Y-%m-%d"))
-print("Close price for " + str(ticker) + ":" + str(finances["close"]))
-print("Predicted price for " + str(ticker) + " at close tomorrow: " + str(prediction * finances["close"]))
+print("Previous close price for " + str(ticker) + ": " + str(finances["close"]))
+print("Predicted close price for " + str(ticker) + ": " + str(prediction * finances["close"]))
 print("Difference of: " + str(prediction * finances["close"] - finances["close"]))
