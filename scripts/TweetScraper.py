@@ -60,13 +60,13 @@ def authentication(page: Page):
 
     time.sleep(2)
 
-    # try:
-    #     page.fill('input[type="password"]', TW_PASSWORD)
-    #     page.keyboard.press('Enter')
-    # except:
-    page.fill('input[type="text"]', TW_USERNAME)
-    page.keyboard.press('Enter')
-    page.fill('input[type="password"]', TW_PASSWORD)
+    try:
+        page.fill('input[type="password"]', TW_PASSWORD)
+        page.keyboard.press('Enter')
+    except:
+        page.fill('input[type="text"]', TW_USERNAME)
+        page.keyboard.press('Enter')
+        page.fill('input[type="password"]', TW_PASSWORD)
     
     page.keyboard.press('Enter')
 
