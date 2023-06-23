@@ -1,3 +1,5 @@
 # MarketPredictor
 
-![MarketPredictor](https://github.com/sharoika/MarketPredictor/blob/readme/AI%20Stonks.png)
+![MarketPredictor](https://github.com/sharoika/MarketPredictor/blob/readme/Market%20Predictor%20Logo.jpg)
+
+
