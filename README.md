@@ -21,7 +21,7 @@ A TensorFlow machine learning algorithm using YFinance (yahoo finance) data alon
 - /analyzed
     - The tweets with sentiment values already attached to them. 
 - /finances
-    - The financial data the YFinanace provides us. 
+    - The financial data that YFinanace provides us. 
 - /scraped
     - The raw tweets scraped straight from twitter. 
 - /scripts
