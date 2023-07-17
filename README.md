@@ -1,7 +1,7 @@
 ## MarketPredictor
-A TensorFlow machine learning algorithm using YFinance (yahoo finance) data alongside scraped Twitter data that has been run thru a sentient analyzer (textblob) to attempt to predict stock movements.
+A TensorFlow machine learning algorithm using YFinance (Yahoo finance) data alongside scraped Twitter data that has been run through a sentient analyzer (textblob) to attempt to predict stock movements.
 
-## AI Generated Logo
+## AI-Generated Logo
 [<img src="https://github.com/sharoika/MarketPredictor/blob/85f43fefb32074d8b13eb722f46238ae54159dfc/logo.jpg" width="300">]
 
 ## Installation and Setup Instructions
@@ -9,7 +9,7 @@ A TensorFlow machine learning algorithm using YFinance (yahoo finance) data alon
 2. Clone the project repository from GitHub.
 3. Navigate to the project directory.
 4. Run "pip install -r requirements.txt" in the root directory to install all the dependencies.
-5. Create a .env file with the following format (all twitter information):
+5. Create a .env file with the following format (all Twitter information):
     - TW_EMAIL=
     - TW_USERNAME=
     - TW_PASSWORD=
@@ -17,16 +17,16 @@ A TensorFlow machine learning algorithm using YFinance (yahoo finance) data alon
 
 ## File Overview
 - /MarketPredictionModel
-    - The TensorFlow model, this was created an uploaded so people don't need to train their own with my data.
+    - The TensorFlow model, was created and uploaded so people don't need to train their own with my data.
 - /analyzed
     - The tweets with sentiment values already attached to them. 
 - /finances
     - The financial data that YFinanace provides us. 
 - /scraped
-    - The raw tweets scraped straight from twitter. 
+    - The raw tweets scraped straight from Twitter. 
 - /scripts
     - FinanaceScraper.py
-        - This is the script that request data from YFinance.
+        - This is the script that requests data from YFinance.
     - SentimentAnalyzer.py
         - This is the script that analyzes the sentiment of the Twitter data.
     - TweetScraper.py
