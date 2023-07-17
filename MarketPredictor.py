@@ -63,6 +63,6 @@ print("Previous close price for " + str(ticker) + ": " + str(finances["close"]))
 print("Predicted close price for " + str(ticker) + ": " + str(prediction * finances["close"]))
 
 if (prediction > 1.00):
-    print("\n" + "Tommorow's close price will be HIGHER than today's close price.")
+    print("\n" + "Tommorow's close price will be HIGHER than today's close price." + "\n")
 else:
-    print("\n" + "Tommorow's close price will be LOWER than today's close price.")
+    print("\n" + "Tommorow's close price will be LOWER than today's close price." + "\n")
