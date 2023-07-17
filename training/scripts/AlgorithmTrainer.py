@@ -25,8 +25,7 @@ def AlgorithmTrainer(masterTrainerFilePath, modelFilePath):
             stockNextDayData = stockNextDay["stock"]
             
             ticker = stockData["ticker"]
-
-            openPrice = float(stockData["open"])
+            
             closePrice = float(stockData["close"] / stockData["open"])
             highPrice = float(stockData["high"] / stockData["open"])
             lowPrice = float(stockData["low"] / stockData["open"])

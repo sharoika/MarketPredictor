@@ -42,8 +42,8 @@ print("Open Price: " + str(openPrice))
 print("Close Price: " + str(closePrice))
 print("High Price: " + str(highPrice))
 print("Low Price: " + str(lowPrice))
-print("Polarity: " + str(polarity))
-print("Subjectivity: " + str(subjectivity))
+print("Average Polarity: " + str(polarity))
+print("Average Subjectivity: " + str(subjectivity))
 
 closePrice = closePrice / openPrice
 highPrice = highPrice / openPrice
@@ -57,7 +57,12 @@ model = tf.keras.models.load_model("MarketPredictionModel")
 
 prediction = model.predict(features)
 
-print(time.strftime("%Y-%m-%d"))
+print("\n" + time.strftime("%Y-%m-%d") + "\n")
+
 print("Previous close price for " + str(ticker) + ": " + str(finances["close"]))
 print("Predicted close price for " + str(ticker) + ": " + str(prediction * finances["close"]))
-print("Difference of: " + str(prediction * finances["close"] - finances["close"]))
+
+if (prediction > 1.00):
+    print("\n" + "Tommorow's close price will be HIGHER than today's close price.")
+else:
+    print("\n" + "Tommorow's close price will be LOWER than today's close price.")
